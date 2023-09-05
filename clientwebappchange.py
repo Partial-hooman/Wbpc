@@ -9,7 +9,7 @@ import mlxtend.preprocessing as preproc
 
 # Sample CSV data (replace with your own dataset)
  # Replace 'dataSort.csv' with your file path
-csv_data = pd.read_csv(r'C:\Users\ADMIN\Desktop\client web app\dataAll.csv')
+csv_data = pd.read_csv('dataSort.csv')
 print(csv_data)
 te = preproc.TransactionEncoder()
 
