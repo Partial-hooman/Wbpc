@@ -122,7 +122,7 @@ def main():
 
     elif page == "Results":
         st.header("Results")
-
+        st.write(te_ary)
         # Generate association rules based on user-defined options
         rules = generate_association_rules(te_ary, min_support, min_confidence)
         if rules.empty:
