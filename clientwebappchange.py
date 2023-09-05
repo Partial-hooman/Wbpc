@@ -136,7 +136,10 @@ def main():
         st.subheader("Top 20 Items with Percentages")
         dat = pd.DataFrame(te_ary, columns=te.columns_)
         top_items = dat.melt().value_counts().reset_index()
-        st.write(top_items)
+        top_items.drop(['value'], axis=1, inplace=True)
+        list1 = ['=======','nan']
+        top_items = top_items[top_items.variable.isin(list1) == False]
+        #st.write(top_items)
         top_items.columns = ['Item', 'Count']
         top_items['Percentage'] = (top_items['Count'] / len(csv_data)) * 100
         st.write(top_items.head(20))
