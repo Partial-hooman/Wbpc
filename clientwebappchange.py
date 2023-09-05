@@ -134,7 +134,8 @@ def main():
 
         # Display top 20 items with percentages
         st.subheader("Top 20 Items with Percentages")
-        top_items = te_ary.melt().value_counts().reset_index()
+        dat = pd.DataFrame(te_ary, columns=te.columns_)
+        top_items = dat.melt().value_counts().reset_index()
         top_items.columns = ['Item', 'Count']
         top_items['Percentage'] = (top_items['Count'] / len(csv_data)) * 100
         st.write(top_items.head(20))
