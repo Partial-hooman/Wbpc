@@ -11,11 +11,19 @@ from mlxtend.preprocessing import TransactionEncoder
  # Replace 'dataSort.csv' with your file path
 csv_data = pd.read_csv('dataSort.csv')
 print(csv_data)
+data = csv_data.split('\n')
+data_list = []
+for i in data:
+ ita = i.split(',')
+ del ita[0]
+ data_list.append(i.split(','))
+del data_list[0]
+
 te = TransactionEncoder()
 
 # Transform the data into a one-hot encoded DataFrame
 #te_ary = te.fit_transform(csv_data)
-te_ary = te.fit(csv_data).transform(csv_data)
+te_ary = te.fit(data_list).transform(data_list)
 
 
 # Initialize min_support and min_confidence as global variables with default values
