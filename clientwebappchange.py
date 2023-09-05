@@ -14,7 +14,7 @@ csv_data.drop(index=csv_data.index[0], axis=0, inplace=True)
 csv_data.drop(index=csv_data.index[0], axis=1, inplace=True)
 print(csv_data)
 #data = (csv_data.to_csv()).split('\n')
-data_list = csv_data.to_numpy()
+data_list = list(csv_data.to_numpy())
 #for i in data:
  #ita = i.split(',')
  #del ita[0]
@@ -82,7 +82,7 @@ def main():
 
     st.title("Shopping List Recommendation App")
     st.write(csv_data)
-    st.write(type(data_list))
+    st.write(data_list)
     # Page selection
     page = st.sidebar.selectbox("Select a page", ["Welcome", "Shopping List", "Options", "Results"])
 
