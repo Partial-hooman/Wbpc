@@ -30,25 +30,25 @@ te_ary = te.fit(data_list).transform(data_list)
 
 
 # Initialize min_support and min_confidence as global variables with default values
-min_support = 0.01
-min_confidence = 0.01
+min_support = 0.5
+min_confidence = 0.07
 
 # Function to generate association rules
 def generate_association_rules(data, min_support, min_confidence):
     # Convert the data to one-hot encoded format
 
-    st.write(min_support)
-    st.write(min_confidence)
+    #st.write(min_support)
+    #st.write(min_confidence)
     #one_hot = pd.get_dummies(sum(data, []), prefix='', prefix_sep='')
     dat = pd.DataFrame(te_ary, columns=te.columns_)
     dat.drop(['=======','nan'],axis=1,inplace=True)
     # Use Apriori algorithm to find frequent item sets
-    st.write(dat)
+    #st.write(dat)
     frequent_item_sets = apriori(dat, min_support=min_support, use_colnames=True)
-    st.write(frequent_item_sets)
+    #st.write(frequent_item_sets)
     # Generate association rules
     rules = association_rules(frequent_item_sets, metric="confidence", min_threshold=min_confidence)
-    st.write(rules)
+    #st.write(rules)
     return rules
 
 # Function to generate recommendations based on shopping list
