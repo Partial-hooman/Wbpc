@@ -6,15 +6,16 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import mlxtend.frequent_patterns as fp
 import mlxtend.preprocessing as preproc
-
+from mlxtend.preprocessing import TransactionEncoder
 # Sample CSV data (replace with your own dataset)
  # Replace 'dataSort.csv' with your file path
 csv_data = pd.read_csv('dataSort.csv')
 print(csv_data)
-te = preproc.TransactionEncoder()
+te = TransactionEncoder()
 
 # Transform the data into a one-hot encoded DataFrame
-te_ary = te.fit_transform(csv_data)
+#te_ary = te.fit_transform(csv_data)
+te_ary = te.fit(csv_data).transform(csv_data)
 
 
 # Initialize min_support and min_confidence as global variables with default values
