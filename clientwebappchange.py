@@ -43,8 +43,9 @@ def generate_association_rules(data, min_support, min_confidence):
     dat = pd.DataFrame(te_ary, columns=te.columns_)
     dat.drop(['=======','nan'],axis=1,inplace=True)
     # Use Apriori algorithm to find frequent item sets
+    st.write(dat)
     frequent_item_sets = apriori(dat, min_support=min_support, use_colnames=True)
-
+    st.write(frequent_item_sets)
     # Generate association rules
     rules = association_rules(frequent_item_sets, metric="confidence", min_threshold=min_confidence)
     st.write(rules)
