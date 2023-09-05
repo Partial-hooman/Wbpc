@@ -83,7 +83,7 @@ def main():
 
         # Create an empty shopping list
         shopping_list = st.text_input("Add items to your shopping list (comma-separated)")
-
+        st.write(te_ary)
         # Create a dropdown with items from the database
         item_list = te_ary.columns.tolist()  # Assuming the columns are item names
         selected_item = st.selectbox("Select an item from the database", item_list)
