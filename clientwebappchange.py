@@ -97,11 +97,12 @@ def main():
         # Create an empty shopping list
         shopping_list = st.text_input("Add items to your shopping list (comma-separated)")
         #st.write(csv_data)
-        #st.write(te_ary)
+        st.write(te_ary)
         #st.write(data_list)
         # Create a dropdown with items from the database
-        item_list = te.columns_  # Assuming the columns are item names
-        st.write(item_list)
+        item_list = te.columns_ # Assuming the columns are item names
+        #st.write(item_list)
+        del item_list[0]
         selected_item = st.selectbox("Select an item from the database", item_list)
 
         if st.button("Add to Shopping List"):
