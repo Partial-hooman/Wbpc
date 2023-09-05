@@ -11,13 +11,13 @@ from mlxtend.preprocessing import TransactionEncoder
  # Replace 'dataSort.csv' with your file path
 csv_data = pd.read_csv('dataSort.csv', low_memory=False)
 print(csv_data)
-data = (csv_data.to_csv()).split('\n')
-data_list = []
-for i in data:
- ita = i.split(',')
- del ita[0]
- data_list.append(i.split(','))
-del data_list[0]
+#data = (csv_data.to_csv()).split('\n')
+data_list = csv_data.to_numpy()
+#for i in data:
+ #ita = i.split(',')
+ #del ita[0]
+ #data_list.append(i.split(','))
+#del data_list[0]
 
 te = TransactionEncoder()
 
