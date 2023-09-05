@@ -25,7 +25,7 @@ te = TransactionEncoder()
 
 # Transform the data into a one-hot encoded DataFrame
 #te_ary = te.fit_transform(csv_data)
-te_ary = te.fit(data_list).transform(data_list)
+#te_ary = te.fit(data_list).transform(data_list)
 
 
 # Initialize min_support and min_confidence as global variables with default values
@@ -81,7 +81,8 @@ def main():
     global min_support, min_confidence  # Declare min_support and min_confidence as global
 
     st.title("Shopping List Recommendation App")
-
+    st.write(csv_data)
+    st.write(data_list)
     # Page selection
     page = st.sidebar.selectbox("Select a page", ["Welcome", "Shopping List", "Options", "Results"])
 
