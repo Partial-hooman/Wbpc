@@ -103,8 +103,8 @@ def main():
         item_list = te.columns_ # Assuming the columns are item names
         #st.write(item_list)
         del item_list[0]
+        item_list = [j for i,j in enumerate(item_list) if j!="nan"]
         selected_item = st.selectbox("Select an item from the database", item_list)
-
         if st.button("Add to Shopping List"):
             shopping_list = [item.strip() for item in shopping_list.split(',')]
             if selected_item:
