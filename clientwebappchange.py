@@ -86,7 +86,7 @@ def main():
         #st.write(csv_data)
         #st.write(te_ary)
         # Create a dropdown with items from the database
-        item_list = te.columns_.tolist()  # Assuming the columns are item names
+        item_list = te.columns_  # Assuming the columns are item names
         selected_item = st.selectbox("Select an item from the database", item_list)
 
         if st.button("Add to Shopping List"):
