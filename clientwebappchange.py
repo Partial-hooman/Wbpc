@@ -87,6 +87,7 @@ def main():
         #st.write(te_ary)
         # Create a dropdown with items from the database
         item_list = te.columns_  # Assuming the columns are item names
+        st.write(item_list)
         selected_item = st.selectbox("Select an item from the database", item_list)
 
         if st.button("Add to Shopping List"):
