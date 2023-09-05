@@ -96,7 +96,8 @@ def main():
 
     elif page == "Shopping List":
         st.header("Shopping List")
-
+        if 'shopping_list' not in st.session_state:
+            st.session_state['shopping_list'] = []
         # Create an empty shopping list
         shopping_list = st.text_input("Add items to your shopping list (comma-separated)")
         #st.write(csv_data)
@@ -111,7 +112,7 @@ def main():
         if st.button("Add to Shopping List"):
             shopping_list = [item.strip() for item in shopping_list.split(',')]
             if selected_item:
-                shopping_list.append(selected_item)
+                st.session_state.shopping_list.append(selected_item)
             st.success("Items added to your shopping list: {}".format(shopping_list))
 
     elif page == "Options":
