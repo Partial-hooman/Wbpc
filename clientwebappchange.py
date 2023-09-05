@@ -82,8 +82,8 @@ def main():
     global min_support, min_confidence  # Declare min_support and min_confidence as global
 
     st.title("Shopping List Recommendation App")
-    st.write(csv_data)
-    st.write(data_list[0])
+    #st.write(csv_data)
+    #st.write(data_list[0])
     # Page selection
     page = st.sidebar.selectbox("Select a page", ["Welcome", "Shopping List", "Options", "Results"])
 
@@ -97,8 +97,8 @@ def main():
         # Create an empty shopping list
         shopping_list = st.text_input("Add items to your shopping list (comma-separated)")
         #st.write(csv_data)
-        st.write(te_ary)
-        st.write(data_list)
+        #st.write(te_ary)
+        #st.write(data_list)
         # Create a dropdown with items from the database
         item_list = te.columns_  # Assuming the columns are item names
         st.write(item_list)
