@@ -57,14 +57,15 @@ def generate_recommendations(shopping_list, data, min_support, min_confidence):
     shopping_df = pd.DataFrame({'items': shopping_list})
 
     # Convert the data to one-hot encoded format
-    one_hot = pd.get_dummies(data, prefix='', prefix_sep='')
-
+    #one_hot = pd.get_dummies(data, prefix='', prefix_seps='')
+    dat = pd.DataFrame(te_ary, columns=te.columns_)
+    dat.drop(['=======','nan'],axis=1,inplace=True)
     # Add columns for items in the shopping list (set to 0 initially)
     for item in shopping_list:
         one_hot[item] = 0
 
     # Apply Apriori algorithm to find recommendations
-    frequent_item_sets = apriori(one_hot, min_support=min_support, use_colnames=True)
+    frequent_item_sets = apriori(dat, min_support=min_support, use_colnames=True)
     rules = association_rules(frequent_item_sets, metric="confidence", min_threshold=min_confidence)
 
     # Filter rules based on shopping list
@@ -145,7 +146,8 @@ def main():
         top_items.columns = ['Item', 'Count']
         top_items['Percentage'] = (top_items['Count'] / len(csv_data)) * 100
         st.write(top_items.head(20))
-
+        st.write("recommended_items:")
+        st.write(generate_recommendations(shopping_list, data, min_support, min_confidence))
         # Create a scatter plot of support vs. confidence
         plt.figure(figsize=(8, 6))
         sns.scatterplot(x='support', y='confidence', data=rules)
