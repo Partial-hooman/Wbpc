@@ -39,7 +39,7 @@ def generate_association_rules(data, min_support, min_confidence):
 
 
 
-    one_hot = pd.get_dummies(data, prefix='', prefix_sep='')
+    one_hot = pd.get_dummies(sum(data, []), prefix='', prefix_sep='')
 
     # Use Apriori algorithm to find frequent item sets
     frequent_item_sets = apriori(one_hot, min_support=min_support, use_colnames=True)
@@ -124,7 +124,7 @@ def main():
         st.header("Results")
         st.write(te_ary)
         # Generate association rules based on user-defined options
-        rules = generate_association_rules(te_ary, min_support, min_confidence)
+        rules = generate_association_rules(data_list, min_support, min_confidence)
         if rules.empty:
             st.warning("No association rules found with the given thresholds. Try lowering the thresholds.")
         else:
