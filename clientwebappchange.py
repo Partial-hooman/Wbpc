@@ -30,8 +30,8 @@ te_ary = te.fit(data_list).transform(data_list)
 
 
 # Initialize min_support and min_confidence as global variables with default values
-min_support = 0.1
-min_confidence = 0.5
+min_support = 0.01
+min_confidence = 0.01
 
 # Function to generate association rules
 def generate_association_rules(data, min_support, min_confidence):
