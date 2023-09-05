@@ -37,8 +37,8 @@ min_confidence = 0.5
 def generate_association_rules(data, min_support, min_confidence):
     # Convert the data to one-hot encoded format
 
-
-
+    st.write(min_support)
+    st.write(min_confidence)
     #one_hot = pd.get_dummies(sum(data, []), prefix='', prefix_sep='')
     dat = pd.DataFrame(te_ary, columns=te.columns_)
     dat.drop(['=======','nan'],axis=1,inplace=True)
@@ -47,7 +47,7 @@ def generate_association_rules(data, min_support, min_confidence):
 
     # Generate association rules
     rules = association_rules(frequent_item_sets, metric="confidence", min_threshold=min_confidence)
-
+    st.write(rules)
     return rules
 
 # Function to generate recommendations based on shopping list
