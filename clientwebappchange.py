@@ -9,7 +9,7 @@ import mlxtend.preprocessing as preproc
 from mlxtend.preprocessing import TransactionEncoder
 # Sample CSV data (replace with your own dataset)
  # Replace 'dataSort.csv' with your file path
-csv_data = pd.read_csv('dataSort.csv')
+csv_data = pd.read_csv('dataSort.csv', low_memory=False)
 print(csv_data)
 data = csv_data.split('\n')
 data_list = []
