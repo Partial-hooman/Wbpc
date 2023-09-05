@@ -14,7 +14,7 @@ csv_data.drop(index=csv_data.index[0], axis=0, inplace=True)
 csv_data.drop(index=csv_data.index[0], axis=1, inplace=True)
 print(csv_data)
 #data = (csv_data.to_csv()).split('\n')
-data_list = list(csv_data.to_numpy())
+data_list = csv_data.to_numpy().tolist()
 #for i in data:
  #ita = i.split(',')
  #del ita[0]
