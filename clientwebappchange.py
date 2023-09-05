@@ -11,7 +11,7 @@ from mlxtend.preprocessing import TransactionEncoder
  # Replace 'dataSort.csv' with your file path
 csv_data = pd.read_csv('dataSort.csv', low_memory=False)
 print(csv_data)
-data = csv_data.split('\n')
+data = (csv_data.to_csv()).split('\n')
 data_list = []
 for i in data:
  ita = i.split(',')
