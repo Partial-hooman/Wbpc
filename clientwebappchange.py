@@ -39,8 +39,9 @@ def generate_association_rules(data, min_support, min_confidence):
 
 
 
-    one_hot = pd.get_dummies(sum(data, []), prefix='', prefix_sep='')
-
+    #one_hot = pd.get_dummies(sum(data, []), prefix='', prefix_sep='')
+    dat = pd.DataFrame(te_ary, columns=te.columns_)
+    dat.drop(['=======','nan'],axis=1,inplace=True)
     # Use Apriori algorithm to find frequent item sets
     frequent_item_sets = apriori(one_hot, min_support=min_support, use_colnames=True)
 
