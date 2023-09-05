@@ -82,7 +82,7 @@ def main():
 
     st.title("Shopping List Recommendation App")
     st.write(csv_data)
-    st.write(data_list)
+    st.write(data_list[0])
     # Page selection
     page = st.sidebar.selectbox("Select a page", ["Welcome", "Shopping List", "Options", "Results"])
 
