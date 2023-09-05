@@ -10,8 +10,8 @@ from mlxtend.preprocessing import TransactionEncoder
 # Sample CSV data (replace with your own dataset)
  # Replace 'dataSort.csv' with your file path
 csv_data = pd.read_csv('dataSort.csv', low_memory=False)
-df.drop(index=df.index[0], axis=0, inplace=True)
-df.drop(index=df.index[0], axis=1, inplace=True)
+csv_data.drop(index=csv_data.index[0], axis=0, inplace=True)
+csv_data.drop(index=csv_data.index[0], axis=1, inplace=True)
 print(csv_data)
 #data = (csv_data.to_csv()).split('\n')
 data_list = csv_data.to_numpy()
