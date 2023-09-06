@@ -126,8 +126,8 @@ def main():
         st.header("Options")
 
         # Support and Confidence thresholds
-        min_support = st.slider("Minimum Support", 0.0, 1.0, st.session_state.min_support)
-        min_confidence = st.slider("Minimum Confidence", 0.0, 1.0, st.session_state.min_confidence)
+        min_support = st.slider("Minimum Support", 0.01, 1.0, st.session_state.min_support)
+        min_confidence = st.slider("Minimum Confidence", 0.01, 1.0, st.session_state.min_confidence)
         st.session_state.min_support = min_support
         st.session_state.min_confidence = min_confidence
         st.write("You can adjust the minimum support and confidence thresholds here.")
