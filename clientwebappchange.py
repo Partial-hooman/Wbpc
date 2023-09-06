@@ -148,7 +148,7 @@ def main():
         top_items['Percentage'] = (top_items['Count'] / len(csv_data)) * 100
         st.write(top_items.head(20))
         st.write("recommended_items:")
-        st.write(generate_recommendations(st.session_state.shopping_list, data, min_support, min_confidence))
+        st.write(generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence))
         # Create a scatter plot of support vs. confidence
         plt.figure(figsize=(8, 6))
         sns.scatterplot(x='support', y='confidence', data=rules)
