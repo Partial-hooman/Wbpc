@@ -64,6 +64,7 @@ def generate_recommendations(shopping_list, data, min_support, min_confidence):
     #one_hot = pd.get_dummies(data, prefix='', prefix_seps='')
     dat = pd.DataFrame(te_ary, columns=te.columns_)
     dat.drop(['=======','nan'],axis=1,inplace=True)
+    
     # Add columns for items in the shopping list (set to 0 initially)
     #for item in shopping_list:
     #    dat[item] = 0
@@ -81,7 +82,7 @@ def generate_recommendations(shopping_list, data, min_support, min_confidence):
         recommended_items.extend(relevant_rules['consequents'].explode().unique())
 
     # Remove items already in the shopping list
-    recommended_items = [item for item in recommended_items if item not in shopping_list]
+    #recommended_items = [item for item in recommended_items if item not in shopping_list]
     #st.write(recommended_items)
     return recommended_items[:5]  # Return the top 5 recommendations
 
