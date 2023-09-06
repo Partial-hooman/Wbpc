@@ -110,7 +110,7 @@ def main():
         item_list = [j for i,j in enumerate(item_list) if j!="nan"]
         selected_item = st.selectbox("Select an item from the database", item_list)
         if st.button("Add to Shopping List"):
-            shopping_list = [item.strip() for item in shopping_list.split(',')]
+            st.session_state.shopping_list = [item.strip() for item in shopping_list.split(',')]
             if selected_item:
                 st.session_state.shopping_list.append(selected_item)
             st.success("Items added to your shopping list: {}".format(shopping_list))
