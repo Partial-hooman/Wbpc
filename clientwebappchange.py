@@ -59,7 +59,7 @@ def generate_association_rules(data, min_support, min_confidence):
 def generate_recommendations(shopping_list, data, min_support, min_confidence):
     # Create a DataFrame with the shopping list
     shopping_df = pd.DataFrame({'items': shopping_list})
-
+    st.write(shopping_df)
     # Convert the data to one-hot encoded format
     #one_hot = pd.get_dummies(data, prefix='', prefix_seps='')
     dat = pd.DataFrame(te_ary, columns=te.columns_)
@@ -67,8 +67,8 @@ def generate_recommendations(shopping_list, data, min_support, min_confidence):
     # Add columns for items in the shopping list (set to 0 initially)
     #for item in shopping_list:
     #    dat[item] = 0
-    st.write(min_support)
-    st.write(min_confidence)
+    #st.write(min_support)
+    #st.write(min_confidence)
     # Apply Apriori algorithm to find recommendations
     frequent_item_sets = apriori(dat, min_support=min_support, use_colnames=True)
     rules = association_rules(frequent_item_sets, metric="confidence", min_threshold=min_confidence)
@@ -82,7 +82,7 @@ def generate_recommendations(shopping_list, data, min_support, min_confidence):
 
     # Remove items already in the shopping list
     recommended_items = [item for item in recommended_items if item not in shopping_list]
-    st.write(recommended_items)
+    #st.write(recommended_items)
     return recommended_items[:5]  # Return the top 5 recommendations
 
 # Streamlit app
