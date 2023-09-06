@@ -82,7 +82,7 @@ def generate_recommendations(shopping_list, data, min_support, min_confidence):
         recommended_items.extend(relevant_rules['consequents'].explode().unique())
 
     # Remove items already in the shopping list
-    #recommended_items = [item for item in recommended_items if item not in shopping_list]
+    recommended_items = [item for item in recommended_items if item not in shopping_list]
     #st.write(recommended_items)
     return recommended_items[:5]  # Return the top 5 recommendations
 
