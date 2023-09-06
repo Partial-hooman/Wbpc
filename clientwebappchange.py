@@ -113,7 +113,7 @@ def main():
             st.session_state.shopping_list = [item.strip() for item in shopping_list.split(',')]
             if selected_item:
                 st.session_state.shopping_list.append(selected_item)
-            st.success("Items added to your shopping list: {}".format(shopping_list))
+            st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
 
     elif page == "Options":
         st.header("Options")
