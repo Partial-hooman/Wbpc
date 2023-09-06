@@ -12,6 +12,7 @@ from mlxtend.preprocessing import TransactionEncoder
 csv_data = pd.read_csv('dataSort.csv', low_memory=False)
 csv_data.drop(columns="Unnamed: 0", inplace=True)
 csv_data=csv_data.astype(str)
+csv_data = csv_data.applymap(str.lower)
 #csv_data.drop(index=csv_data.index[0], axis=1, inplace=True)
 print(csv_data)
 #data = (csv_data.to_csv()).split('\n')
@@ -116,7 +117,7 @@ def main():
         item_list = [j for i,j in enumerate(item_list) if j!="nan"]
         selected_item = st.selectbox("Select an item from the database", item_list)
         if st.button("Add to Shopping List"):
-            st.session_state.shopping_list = [item.strip() for item in shopping_list.split(',')]
+            st.session_state.shopping_list = [item.strip().lower() for item in shopping_list.split(',')]
             if selected_item:
                 st.session_state.shopping_list.append(selected_item)
             st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
