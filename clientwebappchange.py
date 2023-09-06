@@ -86,7 +86,7 @@ def generate_recommendations(shopping_list, data, min_support, min_confidence):
 
 # Streamlit app
 def main():
-    global min_support, min_confidence  # Declare min_support and min_confidence as global
+    #global min_support, min_confidence  # Declare min_support and min_confidence as global
 
     st.title("Shopping List Recommendation App")
     #st.write(csv_data)
