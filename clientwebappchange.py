@@ -67,7 +67,8 @@ def generate_recommendations(shopping_list, data, min_support, min_confidence):
     # Add columns for items in the shopping list (set to 0 initially)
     #for item in shopping_list:
     #    dat[item] = 0
-
+    st.write(min_support)
+    st.write(min_confidence)
     # Apply Apriori algorithm to find recommendations
     frequent_item_sets = apriori(dat, min_support=min_support, use_colnames=True)
     rules = association_rules(frequent_item_sets, metric="confidence", min_threshold=min_confidence)
