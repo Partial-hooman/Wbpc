@@ -30,8 +30,12 @@ te_ary = te.fit(data_list).transform(data_list)
 
 
 # Initialize min_support and min_confidence as global variables with default values
-min_support = 0.01
-min_confidence = 0.01
+#min_support = 0.01
+#min_confidence = 0.01
+if 'min_support' not in st.session_state:
+   st.session_state['min_support'] = 0.0
+if 'min_support' not in st.session_state:
+   st.session_state['min_confidence'] = 0.0
 
 # Function to generate association rules
 def generate_association_rules(data, min_support, min_confidence):
@@ -119,12 +123,14 @@ def main():
         st.header("Options")
 
         # Support and Confidence thresholds
-        min_support = st.slider("Minimum Support", 0.0, 1.0, 0.01)
-        min_confidence = st.slider("Minimum Confidence", 0.0, 1.0, 0.01)
+        st.session_state.min_support = st.slider("Minimum Support", 0.0, 1.0, 0.01)
+        st.session_state.min_confidence = st.slider("Minimum Confidence", 0.0, 1.0, 0.01)
 
         st.write("You can adjust the minimum support and confidence thresholds here.")
 
     elif page == "Results":
+        min_support = st.session_state.min_support
+        min_confidence = st.session_state.min_confidence
         st.header("Results")
         #st.write(te_ary)
         # Generate association rules based on user-defined options
