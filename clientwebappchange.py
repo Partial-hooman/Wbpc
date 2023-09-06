@@ -34,7 +34,7 @@ te_ary = te.fit(data_list).transform(data_list)
 #min_confidence = 0.01
 if 'min_support' not in st.session_state:
    st.session_state['min_support'] = 0.0
-if 'min_support' not in st.session_state:
+if 'min_confidence' not in st.session_state:
    st.session_state['min_confidence'] = 0.0
 
 # Function to generate association rules
