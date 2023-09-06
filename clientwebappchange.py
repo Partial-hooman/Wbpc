@@ -59,7 +59,7 @@ def generate_association_rules(data, min_support, min_confidence):
 def generate_recommendations(shopping_list, data, min_support, min_confidence):
     # Create a DataFrame with the shopping list
     shopping_df = pd.DataFrame({'items': shopping_list})
-    st.write(shopping_df)
+    #st.write(shopping_df)
     # Convert the data to one-hot encoded format
     #one_hot = pd.get_dummies(data, prefix='', prefix_seps='')
     dat = pd.DataFrame(te_ary, columns=te.columns_)
