@@ -62,7 +62,7 @@ def generate_recommendations(shopping_list, data, min_support, min_confidence):
     dat.drop(['=======','nan'],axis=1,inplace=True)
     # Add columns for items in the shopping list (set to 0 initially)
     for item in shopping_list:
-        one_hot[item] = 0
+        dat[item] = 0
 
     # Apply Apriori algorithm to find recommendations
     frequent_item_sets = apriori(dat, min_support=min_support, use_colnames=True)
