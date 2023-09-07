@@ -119,7 +119,7 @@ def main():
         if st.button("Add to Shopping List"):
             #st.session_state.shopping_list = [item.strip().lower() for item in shopping_list.split(',')]
             #if selected_item:
-            itemstoadd = sum(selected_items, [])
+            itemstoadd = sum(selected_item, [])
             st.session_state.shopping_list.append(itemstoadd)
             st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
         st.write("items present in shopping list:")
