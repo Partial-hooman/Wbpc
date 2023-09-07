@@ -34,9 +34,9 @@ te_ary = te.fit(data_list).transform(data_list)
 #min_support = 0.01
 #min_confidence = 0.01
 if 'min_support' not in st.session_state:
-   st.session_state['min_support'] = 0.01
+   st.session_state['min_support'] = 0.05
 if 'min_confidence' not in st.session_state:
-   st.session_state['min_confidence'] = 0.01
+   st.session_state['min_confidence'] = 0.2
 
 # Function to generate association rules
 def generate_association_rules(data, min_support, min_confidence):
@@ -106,7 +106,7 @@ def main():
         if 'shopping_list' not in st.session_state:
             st.session_state['shopping_list'] = []
         # Create an empty shopping list
-        shopping_list = st.text_input("Add items to your shopping list (comma-separated)")
+        #shopping_list = st.text_input("Add items to your shopping list (comma-separated)")
         #st.write(csv_data)
         #st.write(te_ary)
         #st.write(data_list)
@@ -115,13 +115,15 @@ def main():
         #st.write(item_list)
         del item_list[0]
         item_list = [j for i,j in enumerate(item_list) if j!="nan"]
-        selected_item = st.selectbox("Select an item from the database", item_list)
+        selected_item = st.multiselect("Select an item from the database", item_list)
         if st.button("Add to Shopping List"):
-            st.session_state.shopping_list = [item.strip().lower() for item in shopping_list.split(',')]
-            if selected_item:
-                st.session_state.shopping_list.append(selected_item)
+            #st.session_state.shopping_list = [item.strip().lower() for item in shopping_list.split(',')]
+            #if selected_item:
+            itemstoadd = sum(selected_items, [])
+            st.session_state.shopping_list.append(itemstoadd)
             st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
-
+        st.write("items present in shopping list:)
+        st.dataframe(st.session_state.shopping_list)
     elif page == "Options":
         st.header("Options")
 
