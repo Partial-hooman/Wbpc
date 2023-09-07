@@ -119,10 +119,10 @@ def main():
         if st.button("Add to Shopping List"):
             #st.session_state.shopping_list = [item.strip().lower() for item in shopping_list.split(',')]
             #if selected_item:
-            st.write(selected_item)
-            st.write(type (selected_item))
-            itemstoadd = sum(selected_item, [])
-            st.session_state.shopping_list.append(itemstoadd)
+            #st.write(selected_item)
+            #st.write(type (selected_item))
+            #itemstoadd = sum(selected_item, [])
+            st.session_state.shopping_list.extend(selected_item)
             st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
         st.write("items present in shopping list:")
         st.dataframe(st.session_state.shopping_list)
