@@ -122,7 +122,7 @@ def main():
             itemstoadd = sum(selected_items, [])
             st.session_state.shopping_list.append(itemstoadd)
             st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
-        st.write("items present in shopping list:)
+        st.write("items present in shopping list:")
         st.dataframe(st.session_state.shopping_list)
     elif page == "Options":
         st.header("Options")
