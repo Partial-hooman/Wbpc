@@ -122,7 +122,9 @@ def main():
             #st.write(selected_item)
             #st.write(type (selected_item))
             #itemstoadd = sum(selected_item, [])
-            st.session_state.shopping_list.extend(selected_item)
+            for i in selected_item:
+               if i not  in st.session_state.shopping_list:
+                  st.session_state.shopping_list.append(i)
             st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
         st.write("items present in shopping list:")
         st.dataframe(st.session_state.shopping_list)
