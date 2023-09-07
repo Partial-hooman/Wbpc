@@ -116,6 +116,8 @@ def main():
         del item_list[0]
         item_list = [j for i,j in enumerate(item_list) if j!="nan"]
         selected_item = st.multiselect("Select an item from the database", item_list)
+        if st.button("clear shopping list"):
+           st.session_state.shopping_list = []
         if st.button("Add to Shopping List"):
             #st.session_state.shopping_list = [item.strip().lower() for item in shopping_list.split(',')]
             #if selected_item:
