@@ -121,11 +121,25 @@ def main():
         # Create a dropdown with items from the database
         item_list = te.columns_ # Assuming the columns are item names
         #st.write(item_list)
+        
         del item_list[0]
         item_list = [j for i,j in enumerate(item_list) if j!="nan"]
         selected_item = st.multiselect("Select an item from the database", item_list)
         if st.button("clear shopping list"):
            st.session_state.shopping_list = []
+        rc = []
+        try:
+          rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence)
+          st.write("recommended_items:")
+          if len(rc) > 0:
+           st.write(rc)
+          else:
+           rc = top_items.head(5)
+           st.write(top_items.head(5))
+        except:
+           rc = top_items.head(5) 
+           st.write(top_items.head(5))
+         
         if st.button("Add to Shopping List"):
             #st.session_state.shopping_list = [item.strip().lower() for item in shopping_list.split(',')]
             #if selected_item:
@@ -140,15 +154,7 @@ def main():
            
          st.write("items present in shopping list:")
          st.dataframe(st.session_state.shopping_list)
-         try:
-          rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence)
-          st.write("recommended_items:")
-          if len(rc) > 0:
-           st.write(rc)
-          else:
-           st.write(top_items.head(5))
-         except:
-           st.write(top_items.head(5))
+         
     elif page == "Options":
         st.header("Options")
 
