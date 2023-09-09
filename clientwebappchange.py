@@ -103,6 +103,14 @@ def main():
 
     elif page == "Shopping List":
         st.header("Shopping List")
+        dat = pd.DataFrame(te_ary, columns=te.columns_)
+        top_items = dat.melt().value_counts().reset_index()
+        top_items.drop(['value'], axis=1, inplace=True)
+        list1 = ['=======','nan']
+        top_items = top_items[top_items.variable.isin(list1) == False]
+        #st.write(top_items)
+        top_items.columns = ['Item', 'Count']
+        top_items['Percentage'] = (top_items['Count'] / len(csv_data)) * 100
         if 'shopping_list' not in st.session_state:
             st.session_state['shopping_list'] = []
         # Create an empty shopping list
@@ -124,12 +132,23 @@ def main():
             #st.write(selected_item)
             #st.write(type (selected_item))
             #itemstoadd = sum(selected_item, [])
-            for i in selected_item:
+           for i in selected_item:
                if i not  in st.session_state.shopping_list:
                   st.session_state.shopping_list.append(i)
-            st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
-        st.write("items present in shopping list:")
-        st.dataframe(st.session_state.shopping_list)
+            
+           st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
+           
+         st.write("items present in shopping list:")
+         st.dataframe(st.session_state.shopping_list)
+         try:
+          rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence)
+          st.write("recommended_items:")
+          if len(rc) > 0:
+           st.write(rc)
+          else:
+           st.write(top_items.head(5))
+         except:
+           st.write(top_items.head(5))
     elif page == "Options":
         st.header("Options")
 
@@ -165,12 +184,12 @@ def main():
         top_items.columns = ['Item', 'Count']
         top_items['Percentage'] = (top_items['Count'] / len(csv_data)) * 100
         st.write(top_items.head(20))
-        rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence)
-        st.write("recommended_items:")
-        if len(rc) > 0:
-          st.write(rc)
-        else:
-          st.write(top_items.head(5))
+        #rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence)
+        #st.write("recommended_items:")
+        #if len(rc) > 0:
+        #  st.write(rc)
+        #else:
+        #  st.write(top_items.head(5))
         #st.write(generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence))
         # Create a scatter plot of support vs. confidence
         plt.figure(figsize=(8, 6))
