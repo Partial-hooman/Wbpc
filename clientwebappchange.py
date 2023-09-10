@@ -163,34 +163,32 @@ def main():
          #st.write(rc)
          #for itm in rc:
             #if itm not in rc_itms:
-        b_box = st.container()
-        b_area = st.empty()
+        
         if st.button("clear shopping list"):
            st.session_state.shopping_list = []
-           b_area.empty()
-        with b_area:
-           with b_box:
-            if st.button(rc[0],key="0"):
+           
+        
+        if st.button(rc[0],key="0"):
                 if rc[0] not in st.session_state.shopping_list:
                  st.session_state.shopping_list.append(rc[0])
                  #st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
                  st.experimental_rerun()
-            if st.button(rc[1],key="1"):
+        if st.button(rc[1],key="1"):
                 if rc[1] not in st.session_state.shopping_list:
                  st.session_state.shopping_list.append(rc[1])
                  #st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
                  st.experimental_rerun()
-            if st.button(rc[2],key="2"):
+        if st.button(rc[2],key="2"):
                 if rc[2] not in st.session_state.shopping_list:
                  st.session_state.shopping_list.append(rc[2])
                  #st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
                  st.experimental_rerun()
-            if st.button(rc[3],key="3"):
+        if st.button(rc[3],key="3"):
                 if rc[3] not in st.session_state.shopping_list:
                  st.session_state.shopping_list.append(rc[3])
                  #st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
                  st.experimental_rerun()
-            if st.button(rc[4],key="4"):
+        if st.button(rc[4],key="4"):
                 if rc[4] not in st.session_state.shopping_list:
                  st.session_state.shopping_list.append(rc[4])
                  #st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
