@@ -103,6 +103,8 @@ def main():
 
     elif page == "Shopping List":
         st.header("Shopping List")
+        min_support = st.session_state.min_support
+        min_confidence = st.session_state.min_confidence
         dat = pd.DataFrame(te_ary, columns=te.columns_)
         top_items = dat.melt().value_counts().reset_index()
         top_items.drop(['value'], axis=1, inplace=True)
@@ -113,6 +115,7 @@ def main():
         top_items['Percentage'] = (top_items['Count'] / len(csv_data)) * 100
         if 'shopping_list' not in st.session_state:
             st.session_state['shopping_list'] = []
+        
         # Create an empty shopping list
         #shopping_list = st.text_input("Add items to your shopping list (comma-separated)")
         #st.write(csv_data)
