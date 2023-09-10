@@ -145,30 +145,35 @@ def main():
                   st.session_state.shopping_list.append(i)
             
            st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
-           
+           rc = []
+           try:
+             rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence,dat)
+             st.write("recommended_items:")
+             if len(rc) > 0:
+               #st.write(rc)
+             else:
+               rc = list(top_items.head(5)["Item"])
+               #st.write(list(top_items.head(5)["Item"]))
+            except Exception as e:
+               st.write("recommended_items:")
+               rc = list(top_items.head(5)["Item"]) 
+               #st.write(list(top_items.head(5)["Item"]))
+               #st.write(e)
+            for itm in rc:
+              if st.button(itm):
+                 st.session_state.shopping_list.append(itm)
+                 st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
+        #selected_rc_item = st.multiselect("Select an item from recommended items", rc)
+        #if st.button("Add recommended items to Shopping List"):
+           #for i in selected_rc_item:
+               #if i not  in st.session_state.shopping_list:
+                  #st.session_state.shopping_list.append(i)
+             #st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
+
         st.write("items present in shopping list:")
         st.dataframe(st.session_state.shopping_list)
-        rc = []
-        try:
-          rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence,dat)
-          st.write("recommended_items:")
-          if len(rc) > 0:
-           st.write(rc)
-          else:
-           rc = list(top_items.head(5)["Item"])
-           st.write(list(top_items.head(5)["Item"]))
-        except Exception as e:
-           st.write("recommended_items:")
-           rc = list(top_items.head(5)["Item"]) 
-           st.write(list(top_items.head(5)["Item"]))
-           #st.write(e)
-        selected_rc_item = st.multiselect("Select an item from recommended items", rc)
-        if st.button("Add recommended items to Shopping List"):
-           for i in selected_rc_item:
-               if i not  in st.session_state.shopping_list:
-                  st.session_state.shopping_list.append(i)
-           st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
-    elif page == "Options":
+        
+   elif page == "Options":
         st.header("Options")
 
         # Support and Confidence thresholds
@@ -184,6 +189,7 @@ def main():
         st.header("Results")
         #st.write(te_ary)
         # Generate association rules based on user-defined options
+        dat = pd.DataFrame(te_ary, columns=te.columns_)
         rules = generate_association_rules(data_list, min_support, min_confidence,dat)
         if rules.empty:
             st.warning("No association rules found with the given thresholds. Try lowering the thresholds.")
@@ -194,7 +200,7 @@ def main():
 
         # Display top 20 items with percentages
         st.subheader("Top 20 Items with Percentages")
-        dat = pd.DataFrame(te_ary, columns=te.columns_)
+        #dat = pd.DataFrame(te_ary, columns=te.columns_)
         top_items = dat.melt().value_counts().reset_index()
         top_items.drop(['value'], axis=1, inplace=True)
         list1 = ['=======','nan']
