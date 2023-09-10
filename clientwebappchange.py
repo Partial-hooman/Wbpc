@@ -57,14 +57,15 @@ def generate_association_rules(data, min_support, min_confidence,dat):
     return rules
 
 # Function to generate recommendations based on shopping list
-def generate_recommendations(shopping_list, data, min_support, min_confidence):
+def generate_recommendations(shopping_list, data, min_support, min_confidence,dat):
     # Create a DataFrame with the shopping list
     shopping_df = pd.DataFrame({'items': shopping_list})
     #st.write(shopping_df)
     # Convert the data to one-hot encoded format
     #one_hot = pd.get_dummies(data, prefix='', prefix_seps='')
     st.write(len(te.columns_))
-    dat = pd.DataFrame(te_ary, columns=te.columns_)
+    #dat = pd.DataFrame(te_ary, columns=te.columns_)
+    dat=dat
     dat.drop(['=======','nan'],axis=1,inplace=True)
     
     # Add columns for items in the shopping list (set to 0 initially)
@@ -177,7 +178,7 @@ def main():
         st.header("Results")
         #st.write(te_ary)
         # Generate association rules based on user-defined options
-        rules = generate_association_rules(data_list, min_support, min_confidence)
+        rules = generate_association_rules(data_list, min_support, min_confidence,dat)
         if rules.empty:
             st.warning("No association rules found with the given thresholds. Try lowering the thresholds.")
         else:
