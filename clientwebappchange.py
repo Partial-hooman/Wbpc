@@ -152,11 +152,11 @@ def main():
           else:
            rc = list(top_items.head(5)["Item"])
            st.write(list(top_items.head(5)["Item"]))
-        except:
+        except e as Exception:
            st.write("recommended_items:")
            rc = list(top_items.head(5)["Item"]) 
            st.write(list(top_items.head(5)["Item"]))
-         
+           st.write(e)
     elif page == "Options":
         st.header("Options")
 
