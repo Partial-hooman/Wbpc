@@ -63,6 +63,7 @@ def generate_recommendations(shopping_list, data, min_support, min_confidence):
     #st.write(shopping_df)
     # Convert the data to one-hot encoded format
     #one_hot = pd.get_dummies(data, prefix='', prefix_seps='')
+    len(te.columns_)
     dat = pd.DataFrame(te_ary, columns=te.columns_)
     dat.drop(['=======','nan'],axis=1,inplace=True)
     
