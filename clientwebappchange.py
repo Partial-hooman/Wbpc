@@ -165,23 +165,23 @@ def main():
          #for itm in rc:
             #if itm not in rc_itms:
          if st.button(rc[0],key="0"):
-                if itm not in st.session_state.shopping_list:
+                if rc[0] not in st.session_state.shopping_list:
                  st.session_state.shopping_list.append(rc[0])
                  st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
          if st.button(rc[1],key="1"):
-                if itm not in st.session_state.shopping_list:
+                if rc[1] not in st.session_state.shopping_list:
                  st.session_state.shopping_list.append(rc[1])
                  st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
          if st.button(rc[2],key="2"):
-                if itm not in st.session_state.shopping_list:
+                if rc[2] not in st.session_state.shopping_list:
                  st.session_state.shopping_list.append(rc[2])
                  st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
          if st.button(rc[3],key="3"):
-                if itm not in st.session_state.shopping_list:
+                if rc[3] not in st.session_state.shopping_list:
                  st.session_state.shopping_list.append(rc[3])
                  st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
          if st.button(rc[4],key="4"):
-                if itm not in st.session_state.shopping_list:
+                if rc[4] not in st.session_state.shopping_list:
                  st.session_state.shopping_list.append(rc[4])
                  st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
               #rc_itms.append(itm)   
