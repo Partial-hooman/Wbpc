@@ -164,25 +164,25 @@ def main():
          #st.write(rc)
          #for itm in rc:
             #if itm not in rc_itms:
-         if st.button(st.session_state.shopping_list[0],key=st.session_state.shopping_list[0]):
+         if st.button(rc[0],key="0"):
                 if itm not in st.session_state.shopping_list:
-                 st.session_state.shopping_list.append(itm)
+                 st.session_state.shopping_list.append(rc[0])
                  st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
-         if st.button(st.session_state.shopping_list[1],key=st.session_state.shopping_list[1]):
+         if st.button(rc[1],key="1"):
                 if itm not in st.session_state.shopping_list:
-                 st.session_state.shopping_list.append(itm)
+                 st.session_state.shopping_list.append(rc[1])
                  st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
-         if st.button(st.session_state.shopping_list[2],key=st.session_state.shopping_list[2]):
+         if st.button(rc[2],key="2"):
                 if itm not in st.session_state.shopping_list:
-                 st.session_state.shopping_list.append(itm)
+                 st.session_state.shopping_list.append(rc[2])
                  st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
-         if st.button(st.session_state.shopping_list[3],key=st.session_state.shopping_list[3]):
+         if st.button(rc[3],key="3"):
                 if itm not in st.session_state.shopping_list:
-                 st.session_state.shopping_list.append(itm)
+                 st.session_state.shopping_list.append(rc[3])
                  st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
-         if st.button(st.session_state.shopping_list[4],key=st.session_state.shopping_list[4]):
+         if st.button(rc[4],key="4"):
                 if itm not in st.session_state.shopping_list:
-                 st.session_state.shopping_list.append(itm)
+                 st.session_state.shopping_list.append(rc[4])
                  st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
               #rc_itms.append(itm)   
         #selected_rc_item = st.multiselect("Select an item from recommended items", rc)
