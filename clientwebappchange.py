@@ -160,6 +160,7 @@ def main():
                rc = list(top_items.head(5)["Item"]) 
                #st.write(list(top_items.head(5)["Item"]))
                #st.write(e)
+         st.write(rc)
          selected_rc_item = st.multiselect("Select an item from recommended items", rc)
          if st.button("Add recommended items to Shopping List"):
             for i in selected_rc_item:
