@@ -167,7 +167,7 @@ def main():
            for i in selected_rc_item:
                if i not  in st.session_state.shopping_list:
                   st.session_state.shopping_list.append(i)
-            
+           st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
     elif page == "Options":
         st.header("Options")
 
