@@ -159,8 +159,9 @@ def main():
                rc = list(top_items.head(5)["Item"]) 
                #st.write(list(top_items.head(5)["Item"]))
                #st.write(e)
-            for itm in rc:
+           for itm in rc:
               if st.button(itm):
+                if itm not in st.session_state.shopping_list:
                  st.session_state.shopping_list.append(itm)
                  st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
         #selected_rc_item = st.multiselect("Select an item from recommended items", rc)
