@@ -149,9 +149,9 @@ def main():
            try:
              rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence,dat)
              st.write("recommended_items:")
-             if len(rc) > 0:
+             if len(rc) == 0:
                #st.write(rc)
-             else:
+             #else:
                rc = list(top_items.head(5)["Item"])
                #st.write(list(top_items.head(5)["Item"]))
             except Exception as e:
