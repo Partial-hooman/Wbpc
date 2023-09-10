@@ -146,7 +146,8 @@ def main():
             
            st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
         rc = []
-        try:
+        if st.session_state.shopping_list != []:
+         try:
           rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence,dat)
           st.write("recommended_items:")
           if len(rc) == 0:
@@ -154,13 +155,13 @@ def main():
              #else:
                rc = list(top_items.head(5)["Item"])
                #st.write(list(top_items.head(5)["Item"]))
-        except Exception as e:
+         except Exception as e:
                st.write("recommended_items:")
                rc = list(top_items.head(5)["Item"]) 
                #st.write(list(top_items.head(5)["Item"]))
                st.write(e)
-        rc_itms = []
-        for itm in rc:
+         rc_itms = []
+         for itm in rc:
             if itm not in rc_itms:
               if st.button(itm,key=itm):
                 if itm not in st.session_state.shopping_list:
