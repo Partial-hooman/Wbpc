@@ -63,7 +63,7 @@ def generate_recommendations(shopping_list, data, min_support, min_confidence,da
     #st.write(shopping_df)
     # Convert the data to one-hot encoded format
     #one_hot = pd.get_dummies(data, prefix='', prefix_seps='')
-    st.write(len(te.columns_))
+    #st.write(len(te.columns_))
     #dat = pd.DataFrame(te_ary, columns=te.columns_)
     dat=dat
     dat.drop(['=======','nan'],axis=1,inplace=True)
@@ -161,9 +161,9 @@ def main():
            st.write("recommended_items:")
            rc = list(top_items.head(5)["Item"]) 
            st.write(list(top_items.head(5)["Item"]))
-           st.write(e)
+           #st.write(e)
         selected_rc_item = st.multiselect("Select an item from recommended items", rc)
-        if st.button("Add to recommended Shopping List"):
+        if st.button("Add recommended items to Shopping List"):
            for i in selected_rc_item:
                if i not  in st.session_state.shopping_list:
                   st.session_state.shopping_list.append(i)
