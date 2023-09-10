@@ -127,19 +127,7 @@ def main():
         selected_item = st.multiselect("Select an item from the database", item_list)
         if st.button("clear shopping list"):
            st.session_state.shopping_list = []
-        rc = []
-        try:
-          rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence)
-          st.write("recommended_items:")
-          if len(rc) > 0:
-           st.write(rc)
-          else:
-           rc = list(top_items.head(5)["Item"])
-           st.write(list(top_items.head(5)["Item"]))
-        except:
-           st.write("recommended_items:")
-           rc = list(top_items.head(5)["Item"]) 
-           st.write(list(top_items.head(5)["Item"]))
+        
          
         if st.button("Add to Shopping List"):
             #st.session_state.shopping_list = [item.strip().lower() for item in shopping_list.split(',')]
@@ -155,6 +143,19 @@ def main():
            
         st.write("items present in shopping list:")
         st.dataframe(st.session_state.shopping_list)
+        rc = []
+        try:
+          rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence)
+          st.write("recommended_items:")
+          if len(rc) > 0:
+           st.write(rc)
+          else:
+           rc = list(top_items.head(5)["Item"])
+           st.write(list(top_items.head(5)["Item"]))
+        except:
+           st.write("recommended_items:")
+           rc = list(top_items.head(5)["Item"]) 
+           st.write(list(top_items.head(5)["Item"]))
          
     elif page == "Options":
         st.header("Options")
