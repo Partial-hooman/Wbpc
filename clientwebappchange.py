@@ -134,11 +134,12 @@ def main():
           if len(rc) > 0:
            st.write(rc)
           else:
-           rc = top_items.head(5)["Item"]
-           st.write(top_items.head(5)["Item"])
+           rc = list(top_items.head(5)["Item"])
+           st.write(list(top_items.head(5)["Item"]))
         except:
-           rc = top_items.head(5)["Item"] 
-           st.write(top_items.head(5)["Item"])
+           st.write("recommended_items:")
+           rc = list(top_items.head(5)["Item"]) 
+           st.write(list(top_items.head(5)["Item"]))
          
         if st.button("Add to Shopping List"):
             #st.session_state.shopping_list = [item.strip().lower() for item in shopping_list.split(',')]
