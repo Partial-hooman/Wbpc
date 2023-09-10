@@ -162,6 +162,12 @@ def main():
            rc = list(top_items.head(5)["Item"]) 
            st.write(list(top_items.head(5)["Item"]))
            st.write(e)
+        selected_rc_item = st.multiselect("Select an item from recommended items", rc)
+        if st.button("Add to recommended Shopping List"):
+           for i in selected_rc_item:
+               if i not  in st.session_state.shopping_list:
+                  st.session_state.shopping_list.append(i)
+            
     elif page == "Options":
         st.header("Options")
 
