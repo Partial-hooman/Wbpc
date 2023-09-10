@@ -1,3 +1,4 @@
+import time
 import streamlit as st
 import pandas as pd
 from mlxtend.frequent_patterns import apriori
@@ -167,6 +168,8 @@ def main():
                if i not  in st.session_state.shopping_list:
                   st.session_state.shopping_list.append(i)
             st.success("Items added to your shopping list: {}".format(st.session_state.shopping_list))
+            time.sleep(2)
+            st.experimental_rerun()
          #rc_itms = []
          #st.write(rc)
          #for itm in rc:
