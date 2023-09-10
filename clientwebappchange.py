@@ -174,7 +174,7 @@ def main():
         st.write("items present in shopping list:")
         st.dataframe(st.session_state.shopping_list)
         
-   elif page == "Options":
+    elif page == "Options":
         st.header("Options")
 
         # Support and Confidence thresholds
