@@ -39,13 +39,13 @@ if 'min_confidence' not in st.session_state:
    st.session_state['min_confidence'] = 0.2
 
 # Function to generate association rules
-def generate_association_rules(data, min_support, min_confidence):
+def generate_association_rules(data, min_support, min_confidence,dat):
     # Convert the data to one-hot encoded format
 
     #st.write(min_support)
     #st.write(min_confidence)
     #one_hot = pd.get_dummies(sum(data, []), prefix='', prefix_sep='')
-    dat = pd.DataFrame(te_ary, columns=te.columns_)
+    dat = dat
     dat.drop(['=======','nan'],axis=1,inplace=True)
     # Use Apriori algorithm to find frequent item sets
     #st.write(dat)
@@ -149,7 +149,7 @@ def main():
         st.dataframe(st.session_state.shopping_list)
         rc = []
         try:
-          rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence)
+          rc = generate_recommendations(st.session_state.shopping_list, data_list, min_support, min_confidence,dat)
           st.write("recommended_items:")
           if len(rc) > 0:
            st.write(rc)
