@@ -161,6 +161,7 @@ def main():
                #st.write(list(top_items.head(5)["Item"]))
                st.write(e)
          rc_itms = []
+         st.write(rc)
          for itm in rc:
             if itm not in rc_itms:
               if st.button(itm,key=itm):
