@@ -158,7 +158,7 @@ def main():
                st.write("recommended_items:")
                rc = list(top_items.head(5)["Item"]) 
                #st.write(list(top_items.head(5)["Item"]))
-               #st.write(e)
+               st.write(e)
            for itm in rc:
               if st.button(itm):
                 if itm not in st.session_state.shopping_list:
