@@ -152,7 +152,7 @@ def main():
           else:
            rc = list(top_items.head(5)["Item"])
            st.write(list(top_items.head(5)["Item"]))
-        except e as Exception:
+        except Exception as e:
            st.write("recommended_items:")
            rc = list(top_items.head(5)["Item"]) 
            st.write(list(top_items.head(5)["Item"]))
